@@ -1,4 +1,4 @@
-import 'server only';
+import 'server-only';
 import {unstable_cache} from "next/cache";
 import {notFound} from "next/navigation";
 import {capitalize} from "@/lib/utils";
