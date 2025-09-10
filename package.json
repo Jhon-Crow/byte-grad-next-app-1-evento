@@ -11,6 +11,7 @@
     "postinstall": "prisma generate"
   },
   "prisma": {
+    "schema": "./prisma/schema.prisma",
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.js"
   },
   "dependencies": {
