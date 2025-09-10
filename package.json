@@ -8,10 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "db generate"
   },
   "prisma": {
-    "schema": "./prisma/schema.prisma",
+    "schema": "./db/schema.prisma",
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.js"
   },
   "dependencies": {
