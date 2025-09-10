@@ -13,4 +13,23 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 
+// eslint.config.mjs
+export default [
+  {
+    rules: {
+      "import/no-anonymous-default-export": [
+        "error",
+        {
+          "allowArray": true,
+          "allowArrowFunction": true,
+          "allowAnonymousClass": true,
+          "allowAnonymousFunction": true,
+          "allowCallExpression": true,
+          "allowLiteral": true,
+          "allowObject": true
+        }
+      ]
+    }
+  }
+];
 export default eslintConfig;

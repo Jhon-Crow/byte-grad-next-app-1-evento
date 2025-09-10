@@ -25,6 +25,7 @@ function Header() {
                         'text=white': activePathname === rout.path,
                     } ) }>
                         <Link href={rout.path}>{rout.name}</Link>
+                         {/*@ts-ignore*/}
                         { activePathname === rout.path && ( <motion.div layoutId={'header-active-link'} className={'bg-accent h-1 w-full absolute bottom-0'}></motion.div> ) }
                     </li>
                 ))}

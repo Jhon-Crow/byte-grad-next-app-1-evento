@@ -5,11 +5,11 @@ import {Metadata} from "next";
 import {getEvent} from "@/lib/server-utils";
 
 type Props = {
-    params: { slug: string }
+    params: Promise<{ slug: string }>
 };
 
 export async function generateMetadata({params}: Props): Promise<Metadata> {
-    const {slug} = params;
+    const {slug} = await params;
     const eventoEvent = await getEvent(slug);
 
     return {
@@ -25,7 +25,7 @@ export async function generateStaticParams() {
     ]
 }
 export default async function EventPage({params}: Props) {
-    const {slug} = params;
+    const {slug} = await params;
     const eventoEvent = await getEvent(slug);
     const date = new Date(eventoEvent.date);
     return (

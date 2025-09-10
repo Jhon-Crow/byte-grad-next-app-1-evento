@@ -6,16 +6,12 @@ import {capitalize} from "@/lib/utils";
 import {z} from "zod";
 
 type Props = {
-    params: {
-        city: string
-    },
-    searchParams: {
-        [key: string]: string | string[] | undefined
-    }
+    params: Promise<{ city: string }>,
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 };
 
-export function generateMetadata({params}: Props) {
-    const {city} = params;
+export async function generateMetadata({params}: Props) {
+    const {city} = await params;
 
     return {
         title: city === 'all' ? 'All Events' : `Events in ${capitalize(city)}`,
@@ -24,8 +20,9 @@ export function generateMetadata({params}: Props) {
 
 const pageNumberSchema = z.coerce.number().positive().optional();
 export default async function EventsPage({params, searchParams}: Props) {
-    const {city} = params;
-    const parsedPage = pageNumberSchema.safeParse(searchParams.page);
+    const {city} = await params;
+    // @ts-ignore
+    const parsedPage = pageNumberSchema.safeParse(await searchParams?.page);
     if (!parsedPage.success) {
         throw new Error('Invalid page number');
     }
